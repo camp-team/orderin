@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "orderin-9b18a"
+  },
+  "targets": {
+    "orderin-9b18a": {
+      "hosting": {
+        "orderin": [
+          "orderin-9b18a"
+        ]
+      }
+    }
   }
 }
