@@ -16,6 +16,7 @@ export class AddRestaurantsComponent implements OnInit {
   form = this.fb.group({
     name: ['', Validators.required],
     address: ['', Validators.required],
+    phoneNumber: ['', Validators.required],
     openTime: ['', Validators.required],
     closeTime: ['', Validators.required],
     description: ['', Validators.required]
@@ -87,6 +88,7 @@ export class AddRestaurantsComponent implements OnInit {
     const ArrTags = Array.from(setTags);
     this.restaurantService.addRestaurant({
       address: this.form.value.address,
+      phoneNumber: this.form.value.phoneNumber,
       image: this.croppedImage,
       name: this.form.value.name,
       openTime: this.form.value.openTime,

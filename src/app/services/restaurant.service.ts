@@ -26,6 +26,7 @@ export class RestaurantService {
     this.db.doc<Restaurant>(`restaurants/${id}`).set({
       id,
       address: restaurant.address,
+      phoneNumber: restaurant.phoneNumber,
       image,
       name: restaurant.name,
       openTime: restaurant.openTime,
