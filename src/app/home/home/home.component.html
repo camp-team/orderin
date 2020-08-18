@@ -1,3 +1,17 @@
 <div class="container">
-  <p>home</p>
+  <p class="container__header">Restaurants</p>
+  <div class="content">
+    <div class="filters-container">
+      <ul class="filters">
+        <li *ngFor="let cuisine of cuisines">
+          <mat-checkbox>
+            {{cuisine}}
+          </mat-checkbox>
+        </li>
+      </ul>
+    </div>
+    <div class="restaurants-container">
+      <p>restaurants</p>
+    </div>
+  </div>
 </div>
