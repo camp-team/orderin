@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-restaurants',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddRestaurantsComponent implements OnInit {
 
-  constructor() { }
+  form = this.fb.group({
+    name: ['', Validators.required],
+    openTime: ['', Validators.required],
+    closeTime: ['', Validators.required],
+    description: ['', Validators.required]
+  });
+
+  constructor(
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  submit() {
+    console.log(this.form.value);
   }
 
 }

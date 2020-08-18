@@ -1,1 +1,27 @@
-<p>add-restaurants works!</p>
+<div class="container">
+  <h1>Add restaurant</h1>
+  <form [formGroup]='form' class="form">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" formControlName="name" autocomplete="off" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Open time</mat-label>
+      <input matInput type="text" formControlName="openTime" autocomplete="off" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Close time</mat-label>
+      <input matInput type="text" formControlName="closeTime" autocomplete="off" required>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput type="text" formControlName="description" autocomplete="off" required></textarea>
+    </mat-form-field>
+
+    <button mat-raised-button>Save</button>
+  </form>
+</div>
