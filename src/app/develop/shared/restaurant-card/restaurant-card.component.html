@@ -1,4 +1,4 @@
-<section class="card">
+<section class="card" routerLink='/develop/restaurant' [queryParams]='{id: restaurant?.id}'>
   <img class="card__image" src="{{restaurant?.image}}">
   <div class="content">
     <h1 class="content__title">{{restaurant?.name}}</h1>
