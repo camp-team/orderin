@@ -11,7 +11,17 @@ export class RestaurantService {
     private db: AngularFirestore
   ) { }
 
-  addRestaurant(restaurant: Restaurant) {
-    this.db.doc(`restaurants/${restaurant.id}`).set(restaurant);
+  addRestaurant(restaurant: Omit<Restaurant, 'id'>) {
+    const id = this.db.createId();
+    this.db.doc<Restaurant>(`restaurants/${id}`).set({
+      id,
+      address: restaurant.address,
+      image: restaurant.image,
+      name: restaurant.name,
+      openTime: restaurant.openTime,
+      closeTime: restaurant.closeTime,
+      description: restaurant.description,
+      tags: restaurant.tags
+    });
   }
 }
