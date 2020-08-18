@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/interfaces/user';
 
 @Component({
   selector: 'app-shell',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShellComponent implements OnInit {
 
-  constructor() { }
+  user$ = this.authService.user$;
 
-  ngOnInit(): void {
-  }
+  constructor(
+    private authService: AuthService
+  ) { }
+
+  ngOnInit(): void { }
 
 }
