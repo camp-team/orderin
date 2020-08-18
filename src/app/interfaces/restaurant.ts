@@ -5,4 +5,5 @@ export interface Restaurant {
   openTime: string;
   closeTime: string;
   description: string;
+  tags: string[];
 }
