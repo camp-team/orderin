@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DevelopComponent } from './develop/develop.component';
 import { RestaurantsModule } from './restaurants/restaurants.module';
+import { AddRestaurantsModule } from './add-restaurants/add-restaurants.module';
 
 
 const routes: Routes = [
@@ -17,6 +18,10 @@ const routes: Routes = [
       {
         path: 'restaurants',
         loadChildren: () => import('./restaurants/restaurants.module').then((m) => RestaurantsModule)
+      },
+      {
+        path: 'add',
+        loadChildren: () => import('./add-restaurants/add-restaurants.module').then((m) => AddRestaurantsModule)
       }
     ]
   },
