@@ -1,13 +1,14 @@
-<mat-toolbar>
-  <button mat-icon-button>
+<mat-toolbar class="toolbar">
+  <button mat-icon-button class="toolbar__menu-button" (click)="toggleSidenav()">
     <mat-icon>menu</mat-icon>
   </button>
-  <a routerLink="/develop">ORDERIN</a>
-  <button mat-raised-button routerLink='/'>Back</button>
+  <a class="toolbar__title" routerLink="/develop">ORDERIN DEVELOPER</a>
+  <span class="toolbar__spacer"></span>
+  <button mat-raised-button class="toolbar__back-button" routerLink='/'>Back to the web site</button>
 </mat-toolbar>
 
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav class="sidenav" #sidenav mode="side" [opened]="true">
+  <mat-sidenav class="sidenav" #sidenav mode="side" [opened]="isShowing">
     <mat-nav-list>
       <a mat-list-item routerLink='restaurants'>
         <span>Restaurants</span>

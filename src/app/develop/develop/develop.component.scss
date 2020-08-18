@@ -1,3 +1,18 @@
+.toolbar {
+  &__menu-button {
+    margin: 0 20px 0 0;
+  }
+  &__title {
+    color: white;
+    text-decoration: none;
+  }
+  &__title:hover {
+    color: blue;
+  }
+  &__spacer {
+    flex: 1 1 auto;
+  }
+}
 .sidenav-container {
   width: 100%;
   height: calc(100% - 64px);
