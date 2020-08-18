@@ -14,13 +14,15 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Upload an image</mat-label>
-      <ngx-mat-file-input accept="image/x-png,image/jpeg" (change)="fileChangeEvent($event)" required></ngx-mat-file-input>
+      <ngx-mat-file-input accept="image/x-png,image/jpeg" (change)="fileChangeEvent($event)" required>
+      </ngx-mat-file-input>
     </mat-form-field>
 
     <div class="cropper-container" *ngIf="imageChangedEvent">
-      <image-cropper class="cropper-container__cropper" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1 / 1"
-        format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
-        (loadImageFailed)="loadImageFailed()"></image-cropper>
+      <image-cropper class="cropper-container__cropper" [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true" [aspectRatio]="1 / 1" format="png" (imageCropped)="imageCropped($event)"
+        (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()" (loadImageFailed)="loadImageFailed()">
+      </image-cropper>
 
       <img class="cropper-container__croppedImage" [src]="croppedImage" />
     </div>
@@ -38,6 +40,21 @@
     <mat-form-field appearance="outline">
       <mat-label>Description</mat-label>
       <textarea matInput type="text" formControlName="description" autocomplete="off" required></textarea>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-chip-list #chipList>
+        <mat-chip *ngFor="let tag of tags" (removed)="remove(tag)">
+          {{tag}}
+          <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="add tags" #tagsInput [formControl]="tagCtrl"t [matAutocomplete]="auto" [matChipInputFor]="chipList">
+      </mat-chip-list>
+      <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption (optionSelected)="selected($event)">
+        <mat-option *ngFor="let filteredTag of filteredTags | async" [value]="filteredTag">
+          {{filteredTag}}
+        </mat-option>
+      </mat-autocomplete>
     </mat-form-field>
 
     <button mat-raised-button (click)='submit()'>Save</button>

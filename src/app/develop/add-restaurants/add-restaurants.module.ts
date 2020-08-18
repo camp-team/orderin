@@ -9,6 +9,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { ImageCropperModule } from 'ngx-image-cropper';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import { MatIconModule } from '@angular/material/icon';
+
 @NgModule({
   declarations: [AddRestaurantsComponent],
   imports: [
@@ -20,7 +24,10 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     MatFormFieldModule,
     MatButtonModule,
     MaterialFileInputModule,
-    ImageCropperModule
+    ImageCropperModule,
+    MatChipsModule,
+    MatAutocompleteModule,
+    MatIconModule
   ]
 })
 export class AddRestaurantsModule { }
