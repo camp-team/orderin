@@ -3,13 +3,20 @@
     <mat-icon>menu</mat-icon>
   </button>
   <a routerLink="/develop">ORDERIN</a>
+  <button mat-raised-button routerLink='/'>Back</button>
 </mat-toolbar>
 
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav class="sidenav" #sidenav mode="side" [opened]="true">
     <mat-nav-list>
+      <a mat-list-item routerLink='restaurants'>
+        <span>Restaurants</span>
+      </a>
       <a mat-list-item>
-        <span>Language & Literature SL</span>
+        <span>Orderes</span>
+      </a>
+      <a mat-list-item>
+        <span>Add restaurant</span>
       </a>
     </mat-nav-list>
   </mat-sidenav>
