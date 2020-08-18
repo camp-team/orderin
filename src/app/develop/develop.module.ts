@@ -1,0 +1,15 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { DevelopRoutingModule } from './develop-routing.module';
+import { DevelopComponent } from './develop/develop.component';
+
+
+@NgModule({
+  declarations: [DevelopComponent],
+  imports: [
+    CommonModule,
+    DevelopRoutingModule
+  ]
+})
+export class DevelopModule { }
