@@ -8,18 +8,31 @@
     </mat-form-field>
 
     <mat-form-field appearance="outline">
-      <mat-label>Upload an image</mat-label>
-      <ngx-mat-file-input accept='jpg' required></ngx-mat-file-input>
+      <mat-label>Address</mat-label>
+      <input matInput type="text" formControlName="address" autocomplete="off" required>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
+      <mat-label>Upload an image</mat-label>
+      <ngx-mat-file-input accept="image/x-png,image/jpeg" (change)="fileChangeEvent($event)" required></ngx-mat-file-input>
+    </mat-form-field>
+
+    <div class="cropper-container" *ngIf="imageChangedEvent">
+      <image-cropper class="cropper-container__cropper" [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="1 / 1"
+        format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
+        (loadImageFailed)="loadImageFailed()"></image-cropper>
+
+      <img class="cropper-container__croppedImage" [src]="croppedImage" />
+    </div>
+
+    <mat-form-field appearance="outline">
       <mat-label>Open time</mat-label>
-      <input matInput type="text" formControlName="openTime" autocomplete="off" required>
+      <input matInput type="time" formControlName="openTime" autocomplete="off" required>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Close time</mat-label>
-      <input matInput type="text" formControlName="closeTime" autocomplete="off" required>
+      <input matInput type="time" formControlName="closeTime" autocomplete="off" required>
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -27,6 +40,6 @@
       <textarea matInput type="text" formControlName="description" autocomplete="off" required></textarea>
     </mat-form-field>
 
-    <button mat-raised-button>Save</button>
+    <button mat-raised-button (click)='submit()'>Save</button>
   </form>
 </div>

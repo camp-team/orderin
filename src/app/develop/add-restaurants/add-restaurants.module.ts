@@ -8,6 +8,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
+import { ImageCropperModule } from 'ngx-image-cropper';
 @NgModule({
   declarations: [AddRestaurantsComponent],
   imports: [
@@ -18,7 +19,8 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     MatInputModule,
     MatFormFieldModule,
     MatButtonModule,
-    MaterialFileInputModule
+    MaterialFileInputModule,
+    ImageCropperModule
   ]
 })
 export class AddRestaurantsModule { }
