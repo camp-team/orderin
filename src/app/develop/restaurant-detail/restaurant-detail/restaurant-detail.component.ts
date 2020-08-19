@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { RestaurantGetService } from 'src/app/services/restaurant-get.service';
 import { Restaurant } from 'src/app/interfaces/restaurant';
 import { Location } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-restaurant-detail',
@@ -11,7 +12,7 @@ import { Location } from '@angular/common';
 })
 export class RestaurantDetailComponent implements OnInit {
 
-  restaurant: Restaurant;
+  restaurant: Observable<Restaurant>;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -20,9 +21,7 @@ export class RestaurantDetailComponent implements OnInit {
   ) {
     this.activatedRoute.queryParamMap.subscribe((params) => {
       const id = params.get('id');
-      this.restaurantGetService.getRestaurant(id).subscribe((restaurant: Restaurant) => {
-        this.restaurant = restaurant;
-      });
+      this.restaurant = this.restaurantGetService.getRestaurant(id);
     });
   }
 

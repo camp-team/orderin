@@ -47,10 +47,12 @@ export class AddMenuComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {
-    this.activatedRoute.queryParamMap.subscribe((params) => {
-      this.restaurantId = params.get('restaurantId');
-      console.log(this.restaurantId);
-    });
+    this.activatedRoute.queryParamMap.pipe(
+      map((params) => {
+        this.restaurantId = params.get('restaurantId');
+        console.log(this.restaurantId);
+      })
+    );
   }
 
   ngOnInit(): void {
@@ -111,9 +113,9 @@ export class AddMenuComponent implements OnInit {
         isSoldout: false,
         tags: ArrTags
       }).
-      then(() => {
-        this.router.navigate(['/develop/restaurant'], {queryParams: {id: this.restaurantId}});
-      });
+        then(() => {
+          this.router.navigate(['/develop/restaurant'], { queryParams: { id: this.restaurantId } });
+        });
     } else {
       console.log('invalid');
     }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RestaurantGetService } from 'src/app/services/restaurant-get.service';
 import { Restaurant } from 'src/app/interfaces/restaurant';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-restaurants',
@@ -9,7 +10,7 @@ import { Restaurant } from 'src/app/interfaces/restaurant';
 })
 export class RestaurantsComponent implements OnInit {
 
-  restaurants: Restaurant[];
+  restaurants: Observable<Restaurant[]>;
 
   cuisines = [
     'Indian',
@@ -30,9 +31,7 @@ export class RestaurantsComponent implements OnInit {
   constructor(
     private restaurantGetService: RestaurantGetService
   ) {
-    this.restaurantGetService.getRestaurants().subscribe((restaurants: Restaurant[]) => {
-      this.restaurants = restaurants;
-    });
+    this.restaurants = this.restaurantGetService.getRestaurants();
   }
 
   ngOnInit(): void {
