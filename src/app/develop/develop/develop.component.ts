@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DevelopComponent implements OnInit {
 
+  isShowing = true;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  toggleSidenav() {
+    this.isShowing = !this.isShowing;
+  }
 }

@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto 80px auto;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.cropper-container {
+  margin: 0 0 20px 0;
+  text-align: center;
+  &__cropper {
+    width: 60%;
+    margin: 0 auto 20px auto;
+  }
+  &__croppedImage {
+    height: 60%;
+    width: 60%;
+  }
+}

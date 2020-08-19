@@ -1,0 +1,43 @@
+.toolbar {
+  &__spacer {
+    flex: 1 1 auto;
+  }
+  &__add-menu {
+    margin: 0 20px 0 0;
+  }
+}
+.container {
+  width: 80%;
+  margin: 20px auto 0 auto;
+}
+
+.restaurant {
+  display: flex;
+  flex-direction: column;
+}
+
+.restaurant-header {
+  display: flex;
+  flex-direction: row;
+  height: 450px;
+  &__image {
+    height: 100%;
+  }
+}
+
+.restaurant-header-content {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 0 30px 30px;
+  &__name {
+    font-size: 28px;
+  }
+  &__opened {
+    color: green;
+    margin: 0 10px 0 0;
+  }
+  &__closed {
+    color: red;
+    margin: 0 10px 0 0;
+  }
+}
