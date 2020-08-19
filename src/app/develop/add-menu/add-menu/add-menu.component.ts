@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-menu',
@@ -34,10 +35,23 @@ export class AddMenuComponent implements OnInit {
 
   @ViewChild('tagsInput') tagsInput: ElementRef<HTMLInputElement>;
 
+  restaurantId: string;
+
+  creationMode = false;
+
+  editingMode = false;
+
   constructor(
     private fb: FormBuilder,
-    private menuService: MenuService
-  ) { }
+    private menuService: MenuService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {
+    this.activatedRoute.queryParamMap.subscribe((params) => {
+      this.restaurantId = params.get('restaurantId');
+      console.log(this.restaurantId);
+    });
+  }
 
   ngOnInit(): void {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
@@ -82,17 +96,27 @@ export class AddMenuComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.form.value);
-    const setTags = new Set(this.tags);
-    const ArrTags = Array.from(setTags);
-    // this.menuService.addMenu({
-    //   name: this.form.value.name,
-    //   price: this.form.value.price,
-    //   imageUrl: this.croppedImage,
-    //   description: this.form.value.description,
-    //   restaurantId: null,
-    //   tags: ArrTags
-    // });
+    if (this.form.valid) {
+      const setTags = new Set(this.tags);
+      const ArrTags = Array.from(setTags);
+      console.log(this.form.value);
+      console.log(this.restaurantId);
+      console.log(ArrTags);
+      this.menuService.addMenu({
+        name: this.form.value.name,
+        price: this.form.value.price,
+        imageUrl: this.croppedImage,
+        description: this.form.value.description,
+        restaurantId: this.restaurantId,
+        isSoldout: false,
+        tags: ArrTags
+      }).
+      then(() => {
+        this.router.navigate(['/develop/restaurant'], {queryParams: {id: this.restaurantId}});
+      });
+    } else {
+      console.log('invalid');
+    }
   }
 
 }

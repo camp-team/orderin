@@ -3,7 +3,7 @@
     <mat-icon>arrow_back</mat-icon>
   </button>
   <span class="toolbar__spacer"></span>
-  <button mat-raised-button class="toolbar__add-menu" routerLink='/develop/add-menu'>Add menu</button>
+  <button mat-raised-button class="toolbar__add-menu" routerLink='/develop/add-menu' [queryParams]='{restaurantId: restaurant?.id}'>Add menu</button>
   <button mat-raised-button routerLink='/develop/add'>Update restaurant info</button>
 </mat-toolbar>
 
