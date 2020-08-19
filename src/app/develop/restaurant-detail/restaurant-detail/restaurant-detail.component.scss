@@ -1,6 +1,14 @@
+.toolbar {
+  &__spacer {
+    flex: 1 1 auto;
+  }
+  &__add-menu {
+    margin: 0 20px 0 0;
+  }
+}
 .container {
   width: 80%;
-  margin: 0 auto;
+  margin: 20px auto 0 auto;
 }
 
 .restaurant {

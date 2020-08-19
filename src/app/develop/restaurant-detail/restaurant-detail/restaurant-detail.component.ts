@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RestaurantGetService } from 'src/app/services/restaurant-get.service';
 import { Restaurant } from 'src/app/interfaces/restaurant';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-restaurant-detail',
@@ -14,7 +15,8 @@ export class RestaurantDetailComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private restaurantGetService: RestaurantGetService
+    private restaurantGetService: RestaurantGetService,
+    private location: Location
   ) {
     this.activatedRoute.queryParamMap.subscribe((params) => {
       const id = params.get('id');
@@ -25,6 +27,10 @@ export class RestaurantDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  }
+
+  navigateBack() {
+    this.location.back();
   }
 
 }
