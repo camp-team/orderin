@@ -5,6 +5,7 @@
   <a class="toolbar__title" routerLink="/develop">ORDERIN DEVELOPER</a>
   <span class="toolbar__spacer"></span>
   <button mat-raised-button class="toolbar__back-button" routerLink='/'>Back to the web site</button>
+  <img class="toolbar__account-image" src="{{(user$ | async)?.photoURL}}">
 </mat-toolbar>
 
 <mat-sidenav-container class="sidenav-container">
