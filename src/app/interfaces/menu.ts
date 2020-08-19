@@ -5,5 +5,6 @@ export interface Menu {
   imageUrl: string;
   description: string;
   restaurantId: string;
+  isSoldout: boolean;
   tags: string[];
 }

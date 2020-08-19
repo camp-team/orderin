@@ -23,13 +23,14 @@ export class MenuService {
   async addMenu(menu: Omit<Menu, 'id'>) {
     const id = this.db.createId();
     const imageUrl = await this.upload(menu.restaurantId, id, menu.imageUrl);
-    this.db.doc(`restaurants/${menu.restaurantId}/menus/${id}`).set({
+    this.db.doc<Menu>(`restaurants/${menu.restaurantId}/menus/${id}`).set({
       id,
       name: menu.name,
       price: menu.price,
       imageUrl,
       description: menu.description,
       restaurantId: menu.restaurantId,
+      isSoldout: menu.isSoldout,
       tags: menu.tags
     });
   }
