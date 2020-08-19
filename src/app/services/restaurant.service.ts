@@ -35,4 +35,34 @@ export class RestaurantService {
       tags: restaurant.tags
     });
   }
+
+  async updateRestaurant(restaurant: Restaurant) {
+    if (restaurant.image) {
+      console.log('image found');
+      const image = await this.upload(restaurant.id, restaurant.image);
+      this.db.doc<Restaurant>(`restaurants/${restaurant.id}`).set({
+        id: restaurant.id,
+        address: restaurant.address,
+        phoneNumber: restaurant.phoneNumber,
+        image,
+        name: restaurant.name,
+        openTime: restaurant.openTime,
+        closeTime: restaurant.closeTime,
+        description: restaurant.description,
+        tags: restaurant.tags
+      });
+    } else {
+      console.log('image not found');
+      this.db.doc(`restaurants/${restaurant.id}`).update({
+        id: restaurant.id,
+        address: restaurant.address,
+        phoneNumber: restaurant.phoneNumber,
+        name: restaurant.name,
+        openTime: restaurant.openTime,
+        closeTime: restaurant.closeTime,
+        description: restaurant.description,
+        tags: restaurant.tags
+      });
+    }
+  }
 }

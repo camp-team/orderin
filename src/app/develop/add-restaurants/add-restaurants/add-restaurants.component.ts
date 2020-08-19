@@ -5,6 +5,9 @@ import { Observable } from 'rxjs';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { startWith, map } from 'rxjs/operators';
 import { RestaurantService } from 'src/app/services/restaurant.service';
+import { ActivatedRoute } from '@angular/router';
+import { RestaurantGetService } from 'src/app/services/restaurant-get.service';
+import { Restaurant } from 'src/app/interfaces/restaurant';
 
 @Component({
   selector: 'app-add-restaurants',
@@ -12,6 +15,8 @@ import { RestaurantService } from 'src/app/services/restaurant.service';
   styleUrls: ['./add-restaurants.component.scss']
 })
 export class AddRestaurantsComponent implements OnInit {
+
+  restaurant: Restaurant;
 
   form = this.fb.group({
     name: ['', Validators.required],
@@ -24,7 +29,7 @@ export class AddRestaurantsComponent implements OnInit {
 
   imageChangedEvent: any = '';
 
-  croppedImage: any = '';
+  croppedImage: any = null;
 
   tags: string[] = [];
 
@@ -38,8 +43,19 @@ export class AddRestaurantsComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private restaurantService: RestaurantService
-  ) { }
+    private restaurantService: RestaurantService,
+    private restaurantGetService: RestaurantGetService,
+    private activatedRoute: ActivatedRoute
+  ) {
+    this.activatedRoute.queryParamMap.subscribe((params) => {
+      const id = params.get('id');
+      this.restaurantGetService.getRestaurant(id).subscribe((restaurant: Restaurant) => {
+        this.restaurant = restaurant;
+        this.tags = restaurant.tags;
+        this.form.patchValue(restaurant);
+      });
+    });
+  }
 
   ngOnInit(): void {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
@@ -84,9 +100,29 @@ export class AddRestaurantsComponent implements OnInit {
   }
 
   submit() {
+    if (this.restaurant) {
+      this.update();
+    } else {
+      const setTags = new Set(this.tags);
+      const ArrTags = Array.from(setTags);
+      this.restaurantService.addRestaurant({
+        address: this.form.value.address,
+        phoneNumber: this.form.value.phoneNumber,
+        image: this.croppedImage,
+        name: this.form.value.name,
+        openTime: this.form.value.openTime,
+        closeTime: this.form.value.closeTime,
+        description: this.form.value.description,
+        tags: ArrTags
+      });
+    }
+  }
+
+  update() {
     const setTags = new Set(this.tags);
     const ArrTags = Array.from(setTags);
-    this.restaurantService.addRestaurant({
+    this.restaurantService.updateRestaurant({
+      id: this.restaurant.id,
       address: this.form.value.address,
       phoneNumber: this.form.value.phoneNumber,
       image: this.croppedImage,
