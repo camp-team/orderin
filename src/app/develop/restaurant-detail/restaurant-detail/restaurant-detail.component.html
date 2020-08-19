@@ -1,1 +1,24 @@
-<p>{{restaurant?.name}}</p>
+<div class="container">
+  <div class="restaurant">
+    <div class="restaurant-header">
+      <img class="restaurant-header__image" src="{{restaurant?.image}}">
+      <div class="restaurant-header-content">
+        <p class="restaurant-header-content__name">{{restaurant?.name}}</p>
+        <p>
+          <span class="restaurant-header-content__closed" *ngIf="false">Closed</span>
+          <span class="restaurant-header-content__opened" *ngIf="true">Opened</span>
+          {{restaurant?.openTime}}~{{restaurant?.closeTime}}
+        </p>
+        <p>{{restaurant?.description}}</p>
+        <p>{{restaurant?.address}}</p>
+        <p>{{restaurant?.phoneNumber}}</p>
+        <mat-chip-list>
+          <mat-chip *ngFor="let tag of restaurant?.tags">{{tag}}</mat-chip>
+        </mat-chip-list>
+      </div>
+    </div>
+    <div class="restaurant-content">
+
+    </div>
+  </div>
+</div>
