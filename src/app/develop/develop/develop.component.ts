@@ -17,5 +17,4 @@ export class DevelopComponent implements OnInit {
   toggleSidenav() {
     this.isShowing = !this.isShowing;
   }
-
 }
