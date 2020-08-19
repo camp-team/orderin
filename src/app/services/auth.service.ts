@@ -29,7 +29,6 @@ export class AuthService {
       })
     );
     this.afAuth.authState.subscribe((firebaseUser: firebase.User) => {
-      console.log(firebaseUser.uid);
       if (firebaseUser) {
         this.db.doc<User>(`users/${firebaseUser.uid}`).valueChanges().subscribe((user: User) => {
           this.user = user;
