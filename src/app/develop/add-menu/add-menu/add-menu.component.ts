@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { MenuService } from 'src/app/services/menu.service';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './add-menu.component.html',
   styleUrls: ['./add-menu.component.scss']
 })
-export class AddMenuComponent implements OnInit {
+export class AddMenuComponent implements OnInit, OnDestroy {
 
   form = this.fb.group({
     name: ['', Validators.required],
@@ -37,9 +37,7 @@ export class AddMenuComponent implements OnInit {
 
   restaurantId: string;
 
-  creationMode = false;
-
-  editingMode = false;
+  subscription: Subscription;
 
   constructor(
     private fb: FormBuilder,
@@ -47,18 +45,20 @@ export class AddMenuComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router
   ) {
-    this.activatedRoute.queryParamMap.pipe(
-      map((params) => {
-        this.restaurantId = params.get('restaurantId');
-        console.log(this.restaurantId);
-      })
-    );
+    this.subscription = this.activatedRoute.queryParamMap.subscribe((params) => {
+      this.restaurantId = params.get('restaurantId');
+      console.log(this.restaurantId);
+    });
   }
 
   ngOnInit(): void {
     this.filteredTags = this.tagCtrl.valueChanges.pipe(
       startWith(null),
       map((tag: string | null) => tag ? this._filter(tag) : this.allTags.slice()));
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   remove(fruit: string): void {
