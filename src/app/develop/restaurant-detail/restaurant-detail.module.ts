@@ -7,6 +7,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { SharedModule } from 'src/app/develop/shared/shared.module';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   imports: [
     CommonModule,
     RestaurantDetailRoutingModule,
+    SharedModule,
     MatChipsModule,
     MatIconModule,
     MatButtonModule,
