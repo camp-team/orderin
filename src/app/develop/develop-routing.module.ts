@@ -26,7 +26,11 @@ const routes: Routes = [
       {
         path: 'restaurant',
         loadChildren: () => import('./restaurant-detail/restaurant-detail.module').then((m) => m.RestaurantDetailModule)
-      }
+      },
+      {
+        path: 'add-menu',
+        loadChildren: () => import('./add-menu/add-menu.module').then((m) => m.AddMenuModule)
+      },
     ]
   },
   {
