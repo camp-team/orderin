@@ -28,6 +28,6 @@
     </div>
   </div>
   <div class="restaurant-content">
-
+    <p *ngFor="let menu of menus | async">{{menu.name}}</p>
   </div>
 </div>
