@@ -16,9 +16,12 @@ export class AddMenuComponent implements OnInit, OnDestroy {
 
   form = this.fb.group({
     name: ['', Validators.required],
-    price: ['', Validators.required],
     image: [null, Validators.required],
-    description: ['', Validators.required]
+    description: ['', Validators.required],
+    onlyPrice: [0],
+    sPrice: [0],
+    mPrice: [0],
+    lPrice: [0]
   });
 
   imageChangedEvent: any = '';
@@ -98,7 +101,8 @@ export class AddMenuComponent implements OnInit, OnDestroy {
   }
 
   submit() {
-    if (this.form.valid) {
+    const sum = this.form.value.onlyPrice + this.form.value.sPrice + this.form.value.mPrice + this.form.value.lPrice;
+    if (this.form.valid && sum !== 0) {
       const setTags = new Set(this.tags);
       const ArrTags = Array.from(setTags);
       console.log(this.form.value);
@@ -106,11 +110,16 @@ export class AddMenuComponent implements OnInit, OnDestroy {
       console.log(ArrTags);
       this.menuService.addMenu({
         name: this.form.value.name,
-        price: this.form.value.price,
         imageUrl: this.croppedImage,
         description: this.form.value.description,
         restaurantId: this.restaurantId,
         isSoldout: false,
+        sizes: [
+          {size: 'Only', price: this.form.value.onlyPrice},
+          {size: 'S', price: this.form.value.sPrice},
+          {size: 'M', price: this.form.value.mPrice},
+          {size: 'L', price: this.form.value.lPrice},
+        ],
         tags: ArrTags
       }).
         then(() => {

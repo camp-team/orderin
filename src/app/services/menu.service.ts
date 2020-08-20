@@ -26,11 +26,11 @@ export class MenuService {
     this.db.doc<Menu>(`restaurants/${menu.restaurantId}/menus/${id}`).set({
       id,
       name: menu.name,
-      price: menu.price,
       imageUrl,
       description: menu.description,
       restaurantId: menu.restaurantId,
       isSoldout: menu.isSoldout,
+      sizes: menu.sizes,
       tags: menu.tags
     });
   }

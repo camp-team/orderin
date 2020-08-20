@@ -25,6 +25,16 @@
   }
 }
 
+.size-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  &__size {
+    font-size: 32px;
+    margin: 0 0 10px 0;
+  }
+}
+
 .actions {
   display: flex;
   justify-content: flex-end;

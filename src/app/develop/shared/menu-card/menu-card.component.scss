@@ -19,7 +19,7 @@
   box-shadow: 0 1px 9px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
-.container:focus{
+.container:focus {
   outline: none;
 }
 
@@ -27,11 +27,16 @@
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
-  padding: 10px;
+  padding: 20px;
   overflow: hidden;
   &__name {
-    font-size: 24px;
+    font-size: 26px;
     margin: 0 0 10px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
   &__description {
     margin: 0 0 10px 0;
