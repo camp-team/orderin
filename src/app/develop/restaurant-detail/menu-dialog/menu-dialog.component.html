@@ -3,6 +3,11 @@
   <div class="content">
     <p class="content__name">{{data?.name}}</p>
     <p class="content__description">{{data?.description}}</p>
+    <div class="tags-container">
+      <mat-chip-list>
+        <mat-chip *ngFor="let tag of data.tags">{{tag}}</mat-chip>
+      </mat-chip-list>
+    </div>
     <ul class='size-list'>
       <ng-container *ngFor="let size of data?.sizes">
         <li class='size-list__size' *ngIf="size.price !== 0">{{size.size}} size: ₹ {{size.price}}</li>

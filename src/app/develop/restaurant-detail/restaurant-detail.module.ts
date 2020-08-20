@@ -22,7 +22,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatIconModule,
     MatButtonModule,
     MatToolbarModule,
-    MatDialogModule
+    MatDialogModule,
+    MatChipsModule
   ]
 })
 export class RestaurantDetailModule { }
