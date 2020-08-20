@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy, HostListener } from '@angular/core';
 import { MenuService } from 'src/app/services/menu.service';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
@@ -52,6 +52,8 @@ export class AddMenuComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
 
+  isComplete: boolean;
+
   constructor(
     private fb: FormBuilder,
     private menuService: MenuService,
@@ -72,6 +74,14 @@ export class AddMenuComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  @HostListener('window:beforeunload', ['$event'])
+  unloadNotification($event: any) {
+    if (this.form.dirty) {
+      $event.preventDefault();
+      $event.returnValue = 'Your work will be lost. Is it okay?';
+    }
   }
 
   remove(fruit: string): void {
@@ -138,8 +148,11 @@ export class AddMenuComponent implements OnInit, OnDestroy {
           {name: this.form.value.topping5, price: this.form.value.lPrice}
         ],
         tags: ArrTags
-      }).
-        then(() => {
+      })
+      .then(() => {
+        this.isComplete = true;
+      })
+      .then(() => {
           this.router.navigate(['/develop/restaurant'], { queryParams: { id: this.restaurantId } });
         });
     } else {

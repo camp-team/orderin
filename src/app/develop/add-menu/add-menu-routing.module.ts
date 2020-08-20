@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AddMenuComponent } from './add-menu/add-menu.component';
+import { AddMenuGuard } from 'src/app/guards/add-menu.guard';
 
 
 const routes: Routes = [
   {
     path: '',
-    component: AddMenuComponent
+    component: AddMenuComponent,
+    canDeactivate: [AddMenuGuard]
   }
 ];
 
