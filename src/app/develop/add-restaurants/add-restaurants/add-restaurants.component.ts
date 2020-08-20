@@ -49,14 +49,6 @@ export class AddRestaurantsComponent implements OnInit, OnDestroy {
     private restaurantGetService: RestaurantGetService,
     private activatedRoute: ActivatedRoute
   ) {
-    this.activatedRoute.queryParamMap.subscribe((params) => {
-      const id = params.get('id');
-      this.restaurantGetService.getRestaurant(id).subscribe((restaurant: Restaurant) => {
-        this.restaurant = restaurant;
-        this.tags = restaurant.tags;
-        this.form.patchValue(restaurant);
-      });
-    });
     this.activatedRoute.queryParamMap.pipe(
       map((params) => {
         const id = params.get('id');
@@ -76,7 +68,7 @@ export class AddRestaurantsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    // this.subscription.unsubscribe();
   }
 
   remove(fruit: string): void {
