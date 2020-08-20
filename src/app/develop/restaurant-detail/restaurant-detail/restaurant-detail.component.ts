@@ -6,6 +6,8 @@ import { Location } from '@angular/common';
 import { Observable } from 'rxjs';
 import { Menu } from 'src/app/interfaces/menu';
 import { MenuGetService } from 'src/app/services/menu-get.service';
+import {MatDialog} from '@angular/material/dialog';
+import { MenuDialogComponent } from '../menu-dialog/menu-dialog.component';
 
 @Component({
   selector: 'app-restaurant-detail',
@@ -22,7 +24,8 @@ export class RestaurantDetailComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private restaurantGetService: RestaurantGetService,
     private location: Location,
-    private menuGetServiece: MenuGetService
+    private menuGetServiece: MenuGetService,
+    private dialog: MatDialog
   ) {
     this.activatedRoute.queryParamMap.subscribe((params) => {
       const id = params.get('id');
@@ -36,6 +39,15 @@ export class RestaurantDetailComponent implements OnInit {
 
   navigateBack() {
     this.location.back();
+  }
+
+  openDialog(menu: Menu) {
+    const dialogRef = this.dialog.open(MenuDialogComponent, {
+      data: menu
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }

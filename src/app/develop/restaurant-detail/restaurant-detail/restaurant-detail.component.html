@@ -28,8 +28,8 @@
     </div>
   </div>
   <div class="grid">
-    <app-menu-card *ngFor="let menu of menus | async" [menu]='menu'></app-menu-card>
-    <app-menu-card *ngFor="let menu of menus | async" [menu]='menu'></app-menu-card>
-    <app-menu-card *ngFor="let menu of menus | async" [menu]='menu'></app-menu-card>
+    <app-menu-card *ngFor="let menu of menus | async" [menu]='menu' (click)='openDialog(menu)'></app-menu-card>
+    <app-menu-card *ngFor="let menu of menus | async" [menu]='menu' (click)='openDialog(menu)'></app-menu-card>
+    <app-menu-card *ngFor="let menu of menus | async" [menu]='menu' (click)='openDialog(menu)'></app-menu-card>
   </div>
 </div>

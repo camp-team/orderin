@@ -1,0 +1,11 @@
+.container {
+  width: 500px;
+  height: 600px;
+  &__image {
+    width: 100%;
+  }
+}
+
+mat-dialog-container {
+  padding: 0;
+}
