@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Menu } from 'src/app/interfaces/menu';
 
 @Component({
@@ -9,9 +9,13 @@ import { Menu } from 'src/app/interfaces/menu';
 })
 export class MenuDialogComponent implements OnInit {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: Menu) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Menu, public dialogRef: MatDialogRef<MenuDialogComponent>) { }
 
   ngOnInit(): void {
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 
 }
