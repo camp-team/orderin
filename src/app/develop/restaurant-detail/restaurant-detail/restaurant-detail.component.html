@@ -27,7 +27,9 @@
       </mat-chip-list>
     </div>
   </div>
-  <div class="restaurant-content">
-    <p *ngFor="let menu of menus | async">{{menu.name}}</p>
+  <div class="grid">
+    <app-menu-card *ngFor="let menu of menus | async" [menu]='menu'></app-menu-card>
+    <app-menu-card *ngFor="let menu of menus | async" [menu]='menu'></app-menu-card>
+    <app-menu-card *ngFor="let menu of menus | async" [menu]='menu'></app-menu-card>
   </div>
 </div>
