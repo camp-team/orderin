@@ -1,4 +1,5 @@
 import { Size } from './size';
+import { Topping } from './topping';
 
 export interface Menu {
   id: string;
@@ -8,5 +9,6 @@ export interface Menu {
   restaurantId: string;
   isSoldout: boolean;
   sizes: Size[];
+  toppings: Topping[];
   tags: string[];
 }

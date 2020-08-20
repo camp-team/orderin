@@ -21,7 +21,17 @@ export class AddMenuComponent implements OnInit, OnDestroy {
     onlyPrice: [0],
     sPrice: [0],
     mPrice: [0],
-    lPrice: [0]
+    lPrice: [0],
+    topping1: [''],
+    topping1Price: [0],
+    topping2: [''],
+    topping2Price: [0],
+    topping3: [''],
+    topping3Price: [0],
+    topping4: [''],
+    topping4Price: [0],
+    topping5: [''],
+    topping5Price: [0],
   });
 
   imageChangedEvent: any = '';
@@ -119,6 +129,13 @@ export class AddMenuComponent implements OnInit, OnDestroy {
           {size: 'S', price: this.form.value.sPrice},
           {size: 'M', price: this.form.value.mPrice},
           {size: 'L', price: this.form.value.lPrice},
+        ],
+        toppings: [
+          {name: this.form.value.topping1, price: this.form.value.onlyPrice},
+          {name: this.form.value.topping2, price: this.form.value.sPrice},
+          {name: this.form.value.topping3, price: this.form.value.mPrice},
+          {name: this.form.value.topping4, price: this.form.value.lPrice},
+          {name: this.form.value.topping5, price: this.form.value.lPrice}
         ],
         tags: ArrTags
       }).

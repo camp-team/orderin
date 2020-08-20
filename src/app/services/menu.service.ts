@@ -31,6 +31,7 @@ export class MenuService {
       restaurantId: menu.restaurantId,
       isSoldout: menu.isSoldout,
       sizes: menu.sizes,
+      toppings: menu.toppings,
       tags: menu.tags
     });
   }

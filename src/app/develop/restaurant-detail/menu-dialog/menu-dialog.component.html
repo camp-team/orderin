@@ -8,6 +8,11 @@
         <li class='size-list__size' *ngIf="size.price !== 0">{{size.size}} size: ₹ {{size.price}}</li>
       </ng-container>
     </ul>
+    <ul class='topping-list'>
+      <ng-container *ngFor="let topping of data?.toppings">
+        <li class='topping-list__topping' *ngIf="topping.name !== ''">{{topping.name}}: ₹ {{topping.price}}</li>
+      </ng-container>
+    </ul>
     <div class="actions">
       <button mat-stroked-button (click)='onNoClick()'>Close</button>
     </div>
