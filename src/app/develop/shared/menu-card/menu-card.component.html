@@ -1,17 +1,8 @@
-<!-- <mat-card class="card">
-  <img class="card__image" mat-card-image src="{{menu?.imageUrl}}">
-  <mat-card-content class="card-content">
-    <div class="card-info">
-      <h3 class="card-info__title">{{menu?.name}}</h3>
-    </div>
-  </mat-card-content>
-</mat-card> -->
-
 <section class="container">
   <div class="content">
-    <p>{{menu?.name}}</p>
-    <p>{{menu?.description}}</p>
-    <p>{{menu?.price}}</p>
+    <p class="content__name">{{menu?.name}}</p>
+    <p class="content__description">{{menu?.description}}</p>
+    <p class="content__price">₹ {{menu?.price}}</p>
   </div>
   <img class="container__image" src="{{menu?.imageUrl}}">
 </section>
