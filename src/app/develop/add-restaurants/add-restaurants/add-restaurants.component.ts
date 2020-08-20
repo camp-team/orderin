@@ -1,11 +1,11 @@
-import { Component, OnInit, ElementRef, ViewChild, OnDestroy } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild, OnDestroy, HostListener } from '@angular/core';
 import { FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { Observable, Subscription } from 'rxjs';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { startWith, map } from 'rxjs/operators';
 import { RestaurantService } from 'src/app/services/restaurant.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RestaurantGetService } from 'src/app/services/restaurant-get.service';
 import { Restaurant } from 'src/app/interfaces/restaurant';
 
@@ -43,11 +43,14 @@ export class AddRestaurantsComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
 
+  isComplete: boolean;
+
   constructor(
     private fb: FormBuilder,
     private restaurantService: RestaurantService,
     private restaurantGetService: RestaurantGetService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {
     this.activatedRoute.queryParamMap.subscribe((params) => {
       const id = params.get('id');
@@ -68,6 +71,14 @@ export class AddRestaurantsComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     // this.subscription.unsubscribe();
+  }
+
+  @HostListener('window:beforeunload', ['$event'])
+  unloadNotification($event: any) {
+    if (this.form.dirty) {
+      $event.preventDefault();
+      $event.returnValue = 'Your work will be lost. Is it okay?';
+    }
   }
 
   remove(fruit: string): void {
@@ -121,6 +132,12 @@ export class AddRestaurantsComponent implements OnInit, OnDestroy {
         closeTime: this.form.value.closeTime,
         description: this.form.value.description,
         tags: ArrTags
+      })
+      .then(() => {
+        this.isComplete = true;
+      })
+      .then(() => {
+        this.router.navigateByUrl('/develop');
       });
     }
   }
@@ -138,6 +155,12 @@ export class AddRestaurantsComponent implements OnInit, OnDestroy {
       closeTime: this.form.value.closeTime,
       description: this.form.value.description,
       tags: ArrTags
+    })
+    .then(() => {
+      this.isComplete = true;
+    })
+    .then(() => {
+      this.router.navigateByUrl('/develop');
     });
   }
 
