@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-develop',
@@ -9,7 +10,11 @@ export class DevelopComponent implements OnInit {
 
   isShowing = true;
 
-  constructor() { }
+  user$ = this.authService.user$;
+
+  constructor(
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
   }
