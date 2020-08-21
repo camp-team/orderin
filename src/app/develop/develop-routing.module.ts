@@ -3,11 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { DevelopComponent } from './develop/develop.component';
 import { RestaurantsModule } from './restaurants/restaurants.module';
 import { AddRestaurantsModule } from './add-restaurants/add-restaurants.module';
+import { DevelopGuard } from '../guards/develop.guard';
 
 const routes: Routes = [
   {
     path: '',
     component: DevelopComponent,
+    canActivate: [DevelopGuard],
+    canLoad: [DevelopGuard],
     children: [
       {
         path: '',

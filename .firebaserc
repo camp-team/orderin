@@ -2,14 +2,5 @@
   "projects": {
     "dev": "orderin-9b18a",
     "prod": "orderin-prod"
-  },
-  "targets": {
-    "orderin-9b18a": {
-      "hosting": {
-        "orderin": [
-          "orderin-9b18a"
-        ]
-      }
-    }
   }
 }
