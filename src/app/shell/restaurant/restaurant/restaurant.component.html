@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="restaurant-header">
+    <img class="restaurant-header__image" src="{{(restaurant | async)?.image}}">
+    <div class="restaurant-header-content">
+      <p class="restaurant-header-content__name">{{(restaurant | async)?.name}}</p>
+      <p class="restaurant-header-content__time">
+        <span class="restaurant-header-content__closed" *ngIf="false">Closed</span>
+        <span class="restaurant-header-content__opened" *ngIf="true">Opened</span>
+        {{(restaurant | async)?.openTime}}~{{(restaurant | async)?.closeTime}}
+      </p>
+      <p class="restaurant-header-content__description">{{(restaurant | async)?.description}}</p>
+      <p class="restaurant-header-content__address">{{(restaurant | async)?.address}}</p>
+      <p class="restaurant-header-content__number">{{(restaurant | async)?.phoneNumber}}</p>
+      <mat-chip-list>
+        <mat-chip *ngFor="let tag of (restaurant | async)?.tags">{{tag}}</mat-chip>
+      </mat-chip-list>
+    </div>
+  </div>
+  <div class="grid">
+    <app-menu-card *ngFor="let menu of menus | async" [menu]='menu' (click)='openDialog(menu)'></app-menu-card>
+    <app-menu-card *ngFor="let menu of menus | async" [menu]='menu' (click)='openDialog(menu)'></app-menu-card>
+    <app-menu-card *ngFor="let menu of menus | async" [menu]='menu' (click)='openDialog(menu)'></app-menu-card>
+  </div>
+</div>
