@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
   color: white;
   &__header {
@@ -12,6 +12,7 @@
 .content {
   display: flex;
   flex-direction: row;
+  width: 100%;
 }
 
 .filters-container {
@@ -27,3 +28,4 @@
   // background-color: blue;
   width: 80%;
 }
+

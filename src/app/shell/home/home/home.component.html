@@ -10,8 +10,9 @@
         </li>
       </ul>
     </div>
-    <div class="restaurants-container">
-      <app-restaurant-card></app-restaurant-card>
+    <div class="restaurants-container" *ngFor="let restaurant of restaurants | async">
+      <app-restaurant-card [restaurant]='restaurant'></app-restaurant-card>
     </div>
   </div>
 </div>
+
