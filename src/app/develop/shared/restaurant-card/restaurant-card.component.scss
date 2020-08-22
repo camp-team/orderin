@@ -1,11 +1,13 @@
 .card {
   display: flex;
   flex-direction: row;
-  height: 400px;
+  align-items: center;
+  height: 350px;
   background: #303030;
   border-radius: 5px;
   box-shadow: 0 0 12px black;
-  // outline: none;
+  outline: none;
+  cursor: pointer;
   &__image {
     border-radius: 5px 0 0 5px;
     height: 100%;
@@ -14,9 +16,16 @@
 
 .content {
   padding: 40px;
-  &__title {
-    font-size: 30px;
+  &__name {
+    font-size: 32px;
     margin: 0 0 20px 0;
+  }
+  &__description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
   }
   &__tags {
     margin: 0 0 20px 0;
