@@ -1,0 +1,8 @@
+<div class="container">
+  <ul class="developers-list">
+    <li class="developer" *ngFor="let developer of developers | async">
+      <img class="developer__image" src="{{developer.photoURL}}">
+      <span class="developer__name">{{developer.displayName}}</span>
+    </li>
+  </ul>
+</div>

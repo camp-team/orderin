@@ -1,14 +1,13 @@
 <section class="card" routerLink='/develop/restaurant' [queryParams]='{id: restaurant?.id}'>
   <img class="card__image" src="{{restaurant?.image}}">
   <div class="content">
-    <h1 class="content__title">{{restaurant?.name}}</h1>
+    <h1 class="content__name">{{restaurant?.name}}</h1>
     <p><span style="color: red;">Closed</span> {{restaurant?.openTime}} - {{restaurant?.closeTime}}</p>
-    <p>{{restaurant?.description}}</p>
+    <p class="content__description">{{restaurant?.description}}</p>
     <div class="content__tags">
       <mat-chip-list>
         <mat-chip *ngFor="let tag of restaurant?.tags">{{tag}}</mat-chip>
       </mat-chip-list>
     </div>
-    <button mat-raised-button>Order now</button>
   </div>
 </section>

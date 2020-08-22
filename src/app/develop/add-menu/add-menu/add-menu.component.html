@@ -1,5 +1,6 @@
 <div class="container">
-  <h1>Add menu</h1>
+  <h1 *ngIf="!menu">Add menu</h1>
+  <h1 *ngIf="menu">Update menu</h1>
   <form [formGroup]='form' class="form">
 
     <mat-form-field appearance="outline">
@@ -9,7 +10,7 @@
 
     <mat-form-field appearance="outline">
       <mat-label>Upload an image</mat-label>
-      <ngx-mat-file-input accept="image/x-png,image/jpeg" formControlName="image" (change)="fileChangeEvent($event)" required>
+      <ngx-mat-file-input accept="image/x-png,image/jpeg" [formControl]="image" (change)="fileChangeEvent($event)" required>
       </ngx-mat-file-input>
     </mat-form-field>
 

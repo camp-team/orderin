@@ -33,6 +33,10 @@ const routes: Routes = [
         path: 'add-menu',
         loadChildren: () => import('./add-menu/add-menu.module').then((m) => m.AddMenuModule)
       },
+      {
+        path: 'developers',
+        loadChildren: () => import('./developers/developers.module').then((m) => m.DevelopersModule)
+      }
     ]
   },
   {
