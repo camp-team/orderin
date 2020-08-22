@@ -19,6 +19,7 @@
       </ng-container>
     </ul>
     <div class="actions">
+      <button mat-stroked-button class='actions__update-button' routerLink='/develop/add-menu' [queryParams]='{menuId: data?.id, restaurantId: data?.restaurantId}' (click)='onNoClick()'>Update</button>
       <button mat-stroked-button (click)='onNoClick()'>Close</button>
     </div>
   </div>
