@@ -1,11 +1,13 @@
-<section class="card">
-  <img class="card-img"
-    src="https://lh4.googleusercontent.com/-u0gluzzun4w/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucmYI6NluzXjsLaTuorhit3n6cnpUQ/photo.jpg">
-  <div class="card-content">
-    <h1 class="card-title">Little Lama Cafe</h1>
-    <p><span style="color: red;">Closed</span> 10:30 a.m. - 9 p.m.</p>
-    <p>Indian Korean Chinese Western Cafe Momos</p>
-    <p>Mixed fare cafe overlooking the hills & street with a kitsch vibe.</p>
-    <button mat-raised-button>Order now</button>
+<section class="card" routerLink='/restaurant' [queryParams]='{id: restaurant?.id}'>
+  <img class="card__image" src="{{restaurant?.image}}">
+  <div class="content">
+    <h1 class="content__name">{{restaurant?.name}}</h1>
+    <p><span style="color: red;">Closed</span> {{restaurant?.openTime}} - {{restaurant?.closeTime}}</p>
+    <p class="content__description">{{restaurant?.description}}</p>
+    <div class="content__tags">
+      <mat-chip-list>
+        <mat-chip *ngFor="let tag of restaurant?.tags">{{tag}}</mat-chip>
+      </mat-chip-list>
+    </div>
   </div>
 </section>

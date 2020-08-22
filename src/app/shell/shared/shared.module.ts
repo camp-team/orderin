@@ -6,6 +6,7 @@ import { RestaurantCardComponent } from './restaurant-card/restaurant-card.compo
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MenuCardComponent } from './menu-card/menu-card.component';
+import { MatChipsModule } from '@angular/material/chips';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { MenuCardComponent } from './menu-card/menu-card.component';
     CommonModule,
     SharedRoutingModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatChipsModule
   ],
   exports: [
     RestaurantCardComponent,

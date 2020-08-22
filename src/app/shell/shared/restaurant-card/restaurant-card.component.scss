@@ -1,19 +1,33 @@
 .card {
   display: flex;
   flex-direction: row;
+  align-items: center;
   height: 350px;
   background: #303030;
   border-radius: 5px;
   box-shadow: 0 0 12px black;
+  outline: none;
+  cursor: pointer;
+  &__image {
+    border-radius: 5px 0 0 5px;
+    height: 100%;
+  }
 }
-.card-img {
-  border-radius: 5px 0 0 5px;
-  height: 100%;
-}
-.card-content {
-  padding: 50px;
-}
-.card-title {
-  font-size: 20px;
-  margin-bottom: 20px;
+
+.content {
+  padding: 40px;
+  &__name {
+    font-size: 32px;
+    margin: 0 0 20px 0;
+  }
+  &__description {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  &__tags {
+    margin: 0 0 20px 0;
+  }
 }
