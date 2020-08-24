@@ -48,10 +48,20 @@
   }
 }
 
+.quantity-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  &__input {
+    text-align: center;
+  }
+}
+
 .actions {
   display: flex;
   justify-content: flex-end;
-  &__update-button {
+  &__order-button {
     margin: 0 20px 0 0;
   }
 }

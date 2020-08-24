@@ -9,21 +9,35 @@
       </mat-chip-list>
     </div>
     <mat-radio-group class='size-list'>
-      <mat-radio-button *ngFor="let size of data?.sizes" class='size-list__size' value="{{size.size}}">
-        {{size.size}} size: ₹{{size.price}}
+      <mat-radio-button class='size-list__size' *ngFor="let availableSize of availableSizes" [value]="availableSize" (change)='chosenSize = availableSize; calculate()'>
+        {{availableSize.size}} size: ₹{{availableSize.price}}
       </mat-radio-button>
     </mat-radio-group>
     <ul class='topping-list'>
-      <ng-container *ngFor="let topping of data?.toppings">
+      <ng-container *ngFor="let topping of toppings">
         <li class='topping-list__topping' *ngIf="topping.name !== ''">
-          <mat-checkbox>
+          <mat-checkbox [(ngModel)]="topping.selected" (change)='calculate()' [disabled]='!chosenSize'>
             {{topping.name}}: ₹ {{topping.price}}
           </mat-checkbox>
         </li>
       </ng-container>
     </ul>
+
+    <form class="quantity-container" [formGroup]='form' *ngIf="chosenSize" (change)='calculate()'>
+      <mat-form-field>
+        <button mat-button mat-icon-button matPrefix (click)="decrement()">
+          <mat-icon>remove</mat-icon>
+        </button>
+        <input matInput class="quantity-container__input" formControlName='quantity' readonly />
+        <button mat-button mat-icon-button matSuffix (click)="increment()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </mat-form-field>
+    </form>
+
     <div class="actions">
-      <button mat-stroked-button (click)='onNoClick()'>Close</button>
+      <button mat-stroked-button class="actions__order-button" *ngIf="chosenSize" (click)='order()'>Add {{form.value.quantity}} items tp cart: ₹ {{sum}}</button>
+      <button mat-stroked-button color='warn' (click)='onNoClick()'>Close</button>
     </div>
   </div>
 </div>
