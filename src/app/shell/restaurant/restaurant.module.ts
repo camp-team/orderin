@@ -9,7 +9,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MenuDialogComponent } from './menu-dialog/menu-dialog.component';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [RestaurantComponent, MenuDialogComponent],
@@ -21,7 +22,9 @@ import { MenuDialogComponent } from './menu-dialog/menu-dialog.component';
     MatIconModule,
     MatButtonModule,
     MatDialogModule,
-    MatChipsModule
+    MatChipsModule,
+    MatCheckboxModule,
+    MatRadioModule
   ]
 })
 export class RestaurantModule { }

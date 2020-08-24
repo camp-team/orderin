@@ -26,7 +26,8 @@
 }
 
 .size-list {
-  list-style-type: none;
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 20px 0 0 0;
   border-top: solid white 1px;

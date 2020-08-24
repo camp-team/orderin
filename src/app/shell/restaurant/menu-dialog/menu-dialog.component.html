@@ -8,14 +8,18 @@
         <mat-chip *ngFor="let tag of data.tags">{{tag}}</mat-chip>
       </mat-chip-list>
     </div>
-    <ul class='size-list'>
-      <ng-container *ngFor="let size of data?.sizes">
-        <li class='size-list__size' *ngIf="size.price !== 0">{{size.size}} size: ₹ {{size.price}}</li>
-      </ng-container>
-    </ul>
+    <mat-radio-group class='size-list'>
+      <mat-radio-button *ngFor="let size of data?.sizes" class='size-list__size' value="{{size.size}}">
+        {{size.size}} size: ₹{{size.price}}
+      </mat-radio-button>
+    </mat-radio-group>
     <ul class='topping-list'>
       <ng-container *ngFor="let topping of data?.toppings">
-        <li class='topping-list__topping' *ngIf="topping.name !== ''">{{topping.name}}: ₹ {{topping.price}}</li>
+        <li class='topping-list__topping' *ngIf="topping.name !== ''">
+          <mat-checkbox>
+            {{topping.name}}: ₹ {{topping.price}}
+          </mat-checkbox>
+        </li>
       </ng-container>
     </ul>
     <div class="actions">
@@ -23,4 +27,3 @@
     </div>
   </div>
 </div>
-
