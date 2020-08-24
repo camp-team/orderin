@@ -27,7 +27,7 @@
   width: 45%;
   background-color: #303030;
   &__name {
-    font-size: 40px;
+    font-size: 38px;
     margin: 0 0 20px 0;
   }
   &__time {
@@ -44,11 +44,31 @@
   &__description {
     margin: 0 0 10px 0;
   }
+}
+
+.address {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 0 10px 0;
+  &__icon {
+    margin: 0 15px 0 0;
+  }
   &__address {
-    margin: 0 0 10px 0;
+    margin: 0;
+  }
+}
+
+.number {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 0 10px 0;
+  &__icon {
+    margin: 0 15px 0 0;
   }
   &__number {
-    margin: 0 0 20px 0;
+    margin: 0;
   }
 }
 

@@ -9,8 +9,14 @@
         {{(restaurant | async)?.openTime}}~{{(restaurant | async)?.closeTime}}
       </p>
       <p class="restaurant-header-content__description">{{(restaurant | async)?.description}}</p>
-      <p class="restaurant-header-content__address">{{(restaurant | async)?.address}}</p>
-      <p class="restaurant-header-content__number">{{(restaurant | async)?.phoneNumber}}</p>
+      <div class="address">
+        <mat-icon class="address__icon">house</mat-icon>
+        <p class="address__address">{{(restaurant | async)?.address}}</p>
+      </div>
+      <div class="number">
+        <mat-icon class="number__icon">phone</mat-icon>
+        <p class="number__number">{{(restaurant | async)?.phoneNumber}}</p>
+      </div>
       <mat-chip-list>
         <mat-chip *ngFor="let tag of (restaurant | async)?.tags">{{tag}}</mat-chip>
       </mat-chip-list>
