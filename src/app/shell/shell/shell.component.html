@@ -5,6 +5,9 @@
     <button mat-button class="toolbar__cuisines" routerLink='/cuisines'>Cuisines</button>
     <button mat-button class="toolbar__about" routerLink='/about'>About</button>
     <button mat-button class="toolbar__spacer"></button>
+    <button mat-icon-button class="toolbar__shopping-cart" *ngIf="cart | async">
+      <mat-icon matBadge="{{(cart | async)?.length}}" matBadgeOverlap="true">shopping_cart</mat-icon>
+    </button>
     <button mat-raised-button class="toolbar__develop-button" routerLink='/develop' *ngIf="(user$ | async)?.developer">Develop</button>
     <button mat-raised-button routerLink='/login' *ngIf="!(user$ | async)">Login</button>
     <img class="toolbar__account-image" src="{{(user$ | async)?.photoURL}}" *ngIf="(user$ | async)">

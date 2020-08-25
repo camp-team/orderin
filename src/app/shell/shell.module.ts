@@ -6,6 +6,7 @@ import { ShellComponent } from './shell/shell.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { MatIconModule } from '@angular/material/icon';
     ShellRoutingModule,
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatBadgeModule
   ]
 })
 export class ShellModule { }
