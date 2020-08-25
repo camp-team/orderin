@@ -36,7 +36,7 @@
     </form>
 
     <div class="actions">
-      <button mat-stroked-button class="actions__order-button" *ngIf="chosenSize" (click)='order()'>Add {{form.value.quantity}} items tp cart: ₹ {{sum}}</button>
+      <button mat-stroked-button class="actions__order-button" *ngIf="chosenSize && this.form.value.quantity !== 0" (click)='order()'>Add {{form.value.quantity}} items tp cart: ₹ {{sum}}</button>
       <button mat-stroked-button color='warn' (click)='onNoClick()'>Close</button>
     </div>
   </div>
