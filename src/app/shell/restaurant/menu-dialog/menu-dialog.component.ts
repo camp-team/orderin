@@ -73,7 +73,7 @@ export class MenuDialogComponent implements OnInit {
       this.form.setValue({
         quantity: this.form.get('quantity').value - 1
       });
-      this.calculate()
+      this.calculate();
     }
   }
 
@@ -95,17 +95,19 @@ export class MenuDialogComponent implements OnInit {
   order() {
     if (this.chosenSize) {
       this.calculate();
-      this.orderService.order({
-        orderingUserId: this.user.uid,
-        menuId: this.data.id,
-        restaurantId: this.data.restaurantId,
-        size: this.chosenSize,
-        toppings: this.selectedToppings,
-        quantity: this.form.value.quantity,
-        sum: this.sum,
-        isPaid: false,
-        isComplete: false
-      });
+      this.orderService.order(
+        this.authService.user.uid,
+        {
+          orderingUserId: this.user.uid,
+          menuId: this.data.id,
+          restaurantId: this.data.restaurantId,
+          size: this.chosenSize,
+          toppings: this.selectedToppings,
+          quantity: this.form.value.quantity,
+          sum: this.sum,
+          isPaid: false,
+          isComplete: false
+        });
       this.dialogRef.close();
     }
   }
