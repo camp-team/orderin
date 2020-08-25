@@ -14,14 +14,16 @@ export class ShellComponent implements OnInit {
 
   user$ = this.authService.user$;
 
-  cart: Observable<Order[]>;
+  cart: Order;
 
   constructor(
     private authService: AuthService,
     private orderGetService: OrderGetService
   ) {
     this.user$.subscribe((user: User) => {
-      this.cart = this.orderGetService.getCart(user.uid);
+      this.orderGetService.getCart(user.uid).subscribe((cart: Order[]) => {
+        this.cart = cart[0];
+      });
     });
   }
 
