@@ -98,10 +98,13 @@ export class MenuDialogComponent implements OnInit {
       this.orderService.order({
         orderingUserId: this.user.uid,
         menuId: this.data.id,
+        restaurantId: this.data.restaurantId,
         size: this.chosenSize,
         toppings: this.selectedToppings,
         quantity: this.form.value.quantity,
-        sum: this.sum
+        sum: this.sum,
+        isPaid: false,
+        isComplete: false
       });
       this.dialogRef.close();
     }

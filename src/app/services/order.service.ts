@@ -13,14 +13,17 @@ export class OrderService {
 
   order(order: Omit<Order, 'id'>): void {
     const id = this.db.createId();
-    this.db.doc(`orders/${id}`).set({
+    this.db.doc<Order>(`orders/${id}`).set({
       id,
       orderingUserId: order.orderingUserId,
       menuId: order.menuId,
+      restaurantId: order.restaurantId,
       size: order.size,
       toppings: order.toppings,
       quantity: order.quantity,
-      sum: order.sum
+      sum: order.sum,
+      isPaid: order.isPaid,
+      isComplete: order.isComplete
     });
   }
 }
